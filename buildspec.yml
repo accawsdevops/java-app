@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies (if any)."
+
+  pre_build:
+    commands:
+      - echo "Preparing for the build process."
+
+  build:
+    commands:
+      - echo "Compiling the Java code..."
+      - mkdir -p build/WEB-INF/classes
+      - javac -d build/WEB-INF/classes src/HelloWorldServlet.java  # Compile the Java code
+      - echo "Packaging the .war file..."
+      - cp -r WEB-INF build/  # Copy the WEB-INF directory to the build folder
+      - cd build && jar -cvf ../myapp.war .  # Package everything into a .war file
+
+artifacts:
+  files:
+    - myapp.war  # Store the generated .war file as an artifact
+  discard-paths: yes
