@@ -4,38 +4,71 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Project Coordinates -->
     <groupId>com.example</groupId>
     <artifactId>my-java-app</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <!-- Define the Java version for compiling -->
+    <!-- Java Version -->
     <properties>
-        <maven.compiler.source>11</maven.compiler.source> <!-- Use Java 11 -->
-        <maven.compiler.target>11</maven.compiler.target> <!-- Use Java 11 -->
+        <maven.compiler.source>11</maven.compiler.source>  <!-- Java 11 -->
+        <maven.compiler.target>11</maven.compiler.target>  <!-- Java 11 -->
     </properties>
 
-    <!-- Define dependencies -->
+    <!-- Dependencies -->
     <dependencies>
-        <!-- Example of a dependency (you can add more as needed) -->
-        <!-- Add any additional dependencies like testing frameworks or libraries here -->
+        <!-- JUnit for Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- SLF4J (Simple Logging Facade for Java) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.32</version>
+        </dependency>
+
+        <!-- Logback (Logging implementation) -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+
+        <!-- Apache Commons Lang (for utility methods) -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
     </dependencies>
 
-    <!-- Define build section -->
+    <!-- Build Section -->
     <build>
         <plugins>
-            <!-- Maven Compiler Plugin for compiling Java source code -->
+            <!-- Maven Compiler Plugin (Compiling Java source code) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>11</source> <!-- Use Java 11 -->
-                    <target>11</target> <!-- Use Java 11 -->
+                    <source>11</source>  <!-- Use Java 11 -->
+                    <target>11</target>  <!-- Use Java 11 -->
                 </configuration>
             </plugin>
 
-            <!-- Maven JAR Plugin for creating the JAR file -->
+            <!-- Maven JAR Plugin (Creating the .jar file) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -52,11 +85,12 @@
         </plugins>
     </build>
 
-    <!-- Define where to store the JAR file after the build -->
+    <!-- Distribution Management (Optional, if you need to deploy artifacts to a repository) -->
     <distributionManagement>
         <repository>
             <id>releases</id>
             <url>file://${project.basedir}/target/repository</url>
         </repository>
     </distributionManagement>
+
 </project>
