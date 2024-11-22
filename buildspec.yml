@@ -20,7 +20,7 @@ phases:
       echo Building the project with Maven...
       mvn clean install
       # List contents of the target directory to ensure the JAR is being created
-      ls -l target/
+      # ls -l target/
 
   post_build:
     commands:
