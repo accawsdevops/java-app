@@ -9,12 +9,22 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <!-- Define the Java version for compiling -->
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source> <!-- Use Java 11 -->
+        <maven.compiler.target>11</maven.compiler.target> <!-- Use Java 11 -->
+    </properties>
+
+    <!-- Define dependencies -->
     <dependencies>
-        <!-- Add any dependencies you need here -->
+        <!-- Example of a dependency (you can add more as needed) -->
+        <!-- Add any additional dependencies like testing frameworks or libraries here -->
     </dependencies>
 
+    <!-- Define build section -->
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin for compiling Java source code -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -24,6 +34,8 @@
                     <target>11</target> <!-- Use Java 11 -->
                 </configuration>
             </plugin>
+
+            <!-- Maven JAR Plugin for creating the JAR file -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -32,11 +44,19 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.example.HelloWorld</mainClass>
+                            <mainClass>com.example.HelloWorld</mainClass> <!-- Main class to run -->
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <!-- Define where to store the JAR file after the build -->
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>file://${project.basedir}/target/repository</url>
+        </repository>
+    </distributionManagement>
 </project>
